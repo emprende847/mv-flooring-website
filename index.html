@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MV Flooring Services — Pisos de Calidad en Los Ángeles</title>
+<meta name="description" content="Instalación y mantenimiento de pisos de madera, laminado y vinílico en Los Ángeles y 80 millas a la redonda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Arbutus+Slab&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-pure-white:#ffffff;
+    --color-absolute-black:#000000;
+    --color-hairline-gray:#e5e7eb;
+    --color-stone-gray:#6b7280;
+    --color-ash:#b3b3b3;
+    --color-quartz:#bbbbbb;
+    --color-signal-blue:#2563eb;
+    --font-plain:'Inter',ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --page-max-width:1440px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-plain);
+    color:var(--color-absolute-black);
+    background:var(--color-pure-white);
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--page-max-width);margin:0 auto;padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--color-pure-white);
+    border-bottom:1px solid var(--color-hairline-gray);
+  }
+  .nav-inner{
+    max-width:var(--page-max-width);margin:0 auto;padding:0 32px;
+    height:76px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{display:flex;align-items:center;gap:12px;}
+  .nav-logo img{height:48px;width:auto;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{
+    font-size:16px;font-weight:400;color:var(--color-absolute-black);
+    border-bottom:1px solid transparent;padding-bottom:2px;
+    transition:color .15s, border-color .15s;
+  }
+  .nav-links a:hover{color:var(--color-signal-blue);border-bottom-color:var(--color-signal-blue);}
+  .lang-toggle{
+    display:flex;border:1px solid var(--color-absolute-black);
+  }
+  .lang-toggle button{
+    font-family:var(--font-plain);font-size:14px;font-weight:500;
+    padding:6px 14px;background:none;border:none;cursor:pointer;color:var(--color-absolute-black);
+  }
+  .lang-toggle button.active{background:var(--color-absolute-black);color:var(--color-pure-white);}
+  .nav-cta{display:flex;align-items:center;gap:24px;}
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .nav-burger span{width:24px;height:1px;background:#000;display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero-image{width:100%;height:78vh;min-height:420px;object-fit:cover;}
+  .hero-text{padding:80px 0 64px;}
+  .kicker{
+    font-size:16px;font-weight:500;letter-spacing:0.02em;text-transform:uppercase;
+    margin-bottom:20px;display:block;
+  }
+  .display{
+    font-family:'Arbutus Slab',var(--font-plain);
+    font-size:64px;font-weight:400;line-height:1.15;letter-spacing:-0.01em;
+    text-transform:uppercase;
+    margin-bottom:32px;
+  }
+  .display span{display:block;}
+  .hero-body{
+    font-size:18px;line-height:1.5;color:var(--color-absolute-black);
+    max-width:760px;margin-bottom:8px;
+  }
+  .hero-meta{
+    font-size:16px;color:var(--color-stone-gray);margin-top:24px;
+  }
+  .hero-experience{
+    display:inline-block;font-size:18px;font-weight:500;letter-spacing:-0.01em;
+    margin-top:32px;padding-top:16px;border-top:1px solid var(--color-hairline-gray);
+  }
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:64px 0;}
+  .section-divider{border-bottom:1px solid var(--color-hairline-gray);}
+  .heading-lg{font-size:50px;font-weight:300;line-height:1.08;letter-spacing:-0.02em;margin-bottom:24px;}
+  .heading{font-size:30px;font-weight:300;line-height:1.13;letter-spacing:-0.0075em;margin-bottom:16px;}
+  .body-copy{font-size:16px;line-height:1.56;color:var(--color-absolute-black);max-width:640px;}
+  .body-copy.muted{color:var(--color-stone-gray);}
+
+  /* ---------- SERVICES LIST ---------- */
+  .service-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:32px 0;border-bottom:1px solid var(--color-hairline-gray);gap:40px;
+  }
+  .service-row:first-of-type{border-top:1px solid var(--color-hairline-gray);}
+  .service-name{font-size:30px;font-weight:300;letter-spacing:-0.0075em;flex:0 0 auto;min-width:280px;}
+  .service-desc{font-size:16px;color:var(--color-stone-gray);line-height:1.56;max-width:520px;}
+
+  /* ---------- FEATURED PROJECT (before/after) ---------- */
+  .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;}
+  .feature-item{position:relative;}
+  .feature-item img{width:100%;height:420px;object-fit:cover;}
+  .feature-tag{
+    position:absolute;top:16px;left:16px;background:#000;color:#fff;
+    font-size:14px;font-weight:500;padding:6px 12px;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--color-hairline-gray);}
+  .gallery-grid img{width:100%;height:280px;object-fit:cover;display:block;}
+  .gallery-grid a{display:block;overflow:hidden;background:#000;}
+  .gallery-grid img{transition:transform .3s ease;}
+  .gallery-grid a:hover img{transform:scale(1.04);}
+
+  /* ---------- VIDEOS ---------- */
+  .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .video-grid video{width:100%;display:block;background:#000;aspect-ratio:1/1;object-fit:cover;}
+
+  /* ---------- MATERIAL BAND ---------- */
+  .material-band img{width:100%;height:460px;object-fit:cover;}
+  .material-caption{padding:24px 0;font-size:16px;color:var(--color-stone-gray);}
+
+  /* ---------- SERVICE AREA (inverted black band) ---------- */
+  .band-black{background:var(--color-absolute-black);color:var(--color-pure-white);}
+  .band-black .heading-lg{color:var(--color-pure-white);}
+  .band-black .body-copy{color:var(--color-quartz);}
+  .area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:48px;}
+  .area-col h4{font-size:18px;font-weight:500;margin-bottom:16px;color:#fff;}
+  .area-col ul{list-style:none;}
+  .area-col li{
+    font-size:16px;color:var(--color-quartz);padding:6px 0;
+    border-bottom:1px solid #2a2a2a;
+  }
+  .radius-note{
+    margin-top:48px;padding-top:24px;border-top:1px solid #2a2a2a;
+    font-size:14px;color:var(--color-ash);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;}
+  .field-group{margin-bottom:20px;}
+  .field-label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;}
+  .field-input,.field-select,.field-textarea{
+    width:100%;border:1px solid var(--color-stone-gray);border-radius:2px;
+    background:var(--color-pure-white);color:var(--color-absolute-black);
+    padding:8px 12px;font-family:var(--font-plain);font-size:16px;
+  }
+  .field-input:focus,.field-select:focus,.field-textarea:focus{outline:none;border-color:var(--color-absolute-black);}
+  .field-textarea{resize:vertical;min-height:100px;}
+  .ghost-cta{
+    display:inline-block;font-size:16px;font-weight:500;color:var(--color-absolute-black);
+    border-bottom:1px solid var(--color-absolute-black);background:none;border-top:none;border-left:none;border-right:none;
+    cursor:pointer;padding:0 0 2px;font-family:var(--font-plain);
+  }
+  .ghost-cta:hover{color:var(--color-signal-blue);border-color:var(--color-signal-blue);}
+  .contact-info-cell{border-left:1px solid var(--color-hairline-gray);padding-left:64px;}
+  .contact-info-row{padding:16px 0;border-bottom:1px solid var(--color-hairline-gray);}
+  .contact-info-label{font-size:14px;color:var(--color-stone-gray);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:4px;}
+  .contact-info-value{font-size:18px;font-weight:400;}
+  .contact-info-value a{border-bottom:1px solid var(--color-hairline-gray);}
+  .contact-info-value a:hover{color:var(--color-signal-blue);border-color:var(--color-signal-blue);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--color-hairline-gray);padding:48px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:32px;}
+  .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+  .footer-links a{font-size:16px;}
+  .footer-links a:hover{color:var(--color-signal-blue);}
+  .footer-copy{font-size:14px;color:var(--color-ash);}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .wa-float{
+    position:fixed;bottom:28px;right:28px;z-index:200;
+    width:56px;height:56px;border-radius:50%;
+    background:var(--color-absolute-black);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:none;border:1px solid var(--color-absolute-black);
+    transition:transform .15s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:28px;height:28px;fill:#fff;}
+  .wa-tooltip{
+    position:absolute;right:66px;top:50%;transform:translateY(-50%);
+    background:#000;color:#fff;font-size:14px;padding:6px 12px;
+    white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s ease;
+  }
+  .wa-float:hover .wa-tooltip{opacity:1;}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:900px){
+    .display{font-size:36px;letter-spacing:-0.01em;}
+    .heading-lg{font-size:34px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .feature-item img{height:280px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .video-grid{grid-template-columns:1fr;}
+    .area-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-info-cell{border-left:none;padding-left:0;border-top:1px solid var(--color-hairline-gray);padding-top:32px;}
+    .service-row{flex-direction:column;gap:8px;}
+    .service-name{min-width:0;}
+    .nav-links{display:none;}
+    .nav-burger{display:flex;}
+    .wrap{padding:0 20px;}
+    .nav-inner{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="assets/mv-flooring/mv_logo_hd.png" alt="MV Flooring Services">
+    </a>
+    <div class="nav-links">
+      <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+      <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+      <a href="#area" data-es="Área de Servicio" data-en="Service Area">Área de Servicio</a>
+      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <div class="lang-toggle">
+        <button type="button" id="btn-es" class="active" onclick="setLang('es')">ES</button>
+        <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="nav-burger" aria-label="menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</div>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<img class="hero-image" src="assets/mv-flooring/hero_staircase.webp" alt="Piso de madera en sala y escalera">
+
+<section class="hero-text">
+  <div class="wrap">
+    <span class="kicker" data-es="MV FLOORING SERVICES · LOS ÁNGELES, CA" data-en="MV FLOORING SERVICES · LOS ANGELES, CA">MV FLOORING SERVICES · LOS ÁNGELES, CA</span>
+    <h1 class="display"><span data-es="Transformamos pisos." data-en="We transform floors.">Transformamos pisos.</span><span data-es="Transformamos espacios." data-en="We transform spaces.">Transformamos espacios.</span></h1>
+    <p class="hero-body" data-es="MV Flooring Services instala, repara y da mantenimiento a pisos de madera, laminado y vinílico/LVP en toda el área de Los Ángeles. Trabajo limpio, materiales de calidad y atención directa con Edgar Márquez, dueño y encargado de cada proyecto." data-en="MV Flooring Services installs, repairs, and maintains hardwood, laminate, and vinyl/LVP flooring across the greater Los Angeles area. Clean work, quality materials, and direct attention from Edgar Márquez, owner and lead on every project.">MV Flooring Services instala, repara y da mantenimiento a pisos de madera, laminado y vinílico/LVP en toda el área de Los Ángeles. Trabajo limpio, materiales de calidad y atención directa con Edgar Márquez, dueño y encargado de cada proyecto.</p>
+    <p class="hero-experience" data-es="15+ años de experiencia instalando y reparando pisos" data-en="15+ years of experience installing and repairing floors">15+ años de experiencia instalando y reparando pisos</p>
+    <p class="hero-meta" data-es="Servicio en Los Ángeles y hasta 80 millas a la redonda · Domingo–Viernes, 7 AM–5 PM" data-en="Serving Los Angeles and up to 80 miles around · Sunday–Friday, 7 AM–5 PM">Servicio en Los Ángeles y hasta 80 millas a la redonda · Domingo–Viernes, 7 AM–5 PM</p>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="servicios">
+  <div class="wrap">
+    <span class="kicker" data-es="Lo que hacemos" data-en="What we do">Lo que hacemos</span>
+    <h2 class="heading-lg" data-es="Servicios" data-en="Services">Servicios</h2>
+
+    <div class="service-row">
+      <span class="service-name" data-es="Piso de Madera" data-en="Hardwood Flooring">Piso de Madera</span>
+      <span class="service-desc" data-es="Instalación de piso de madera sólida e ingeniería, incluyendo patrones de espiga (herringbone) y restauración de pisos existentes." data-en="Installation of solid and engineered hardwood, including herringbone patterns and restoration of existing floors.">Instalación de piso de madera sólida e ingeniería, incluyendo patrones de espiga (herringbone) y restauración de pisos existentes.</span>
+    </div>
+    <div class="service-row">
+      <span class="service-name" data-es="Piso Laminado" data-en="Laminate Flooring">Piso Laminado</span>
+      <span class="service-desc" data-es="Instalación de piso laminado resistente y de bajo mantenimiento para cualquier ambiente del hogar." data-en="Durable, low-maintenance laminate flooring installation for any room in the home.">Instalación de piso laminado resistente y de bajo mantenimiento para cualquier ambiente del hogar.</span>
+    </div>
+    <div class="service-row">
+      <span class="service-name" data-es="Vinílico / LVP" data-en="Vinyl / LVP">Vinílico / LVP</span>
+      <span class="service-desc" data-es="Piso de vinil de lujo (LVP), resistente al agua e ideal para cocinas, baños y áreas de alto tráfico." data-en="Luxury vinyl plank (LVP), water-resistant and ideal for kitchens, bathrooms, and high-traffic areas.">Piso de vinil de lujo (LVP), resistente al agua e ideal para cocinas, baños y áreas de alto tráfico.</span>
+    </div>
+    <div class="service-row">
+      <span class="service-name" data-es="Mantenimiento y Reparación" data-en="Maintenance & Repair">Mantenimiento y Reparación</span>
+      <span class="service-desc" data-es="Reparación de daños, lijado, y mantenimiento preventivo para extender la vida de tu piso." data-en="Damage repair, sanding, and preventive maintenance to extend the life of your floor.">Reparación de daños, lijado, y mantenimiento preventivo para extender la vida de tu piso.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PROJECT ============ -->
+<section id="proyectos" style="padding-top:0;">
+  <div class="wrap" style="margin-bottom:32px;">
+    <span class="kicker" data-es="Proyecto Destacado" data-en="Featured Project">Proyecto Destacado</span>
+    <h2 class="heading" data-es="Restauración de Escalera" data-en="Staircase Restoration">Restauración de Escalera</h2>
+    <p class="body-copy muted" data-es="De una escalera dañada y manchada a un acabado nuevo con contrahuellas blancas." data-en="From a stained, damaged staircase to a fresh finish with white risers.">De una escalera dañada y manchada a un acabado nuevo con contrahuellas blancas.</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="feature-tag" data-es="Antes" data-en="Before">Antes</span>
+      <img src="assets/mv-flooring/proj_10_stairs_before.webp" alt="Escalera antes de restauración">
+    </div>
+    <div class="feature-item">
+      <span class="feature-tag" data-es="Después" data-en="After">Después</span>
+      <img src="assets/mv-flooring/proj_11_stairs_after.webp" alt="Escalera después de restauración">
+    </div>
+  </div>
+
+  <div class="wrap" style="margin-top:64px;margin-bottom:32px;">
+    <span class="kicker" data-es="Proyecto Destacado" data-en="Featured Project">Proyecto Destacado</span>
+    <h2 class="heading" data-es="Renovación de Cocina" data-en="Kitchen Renovation">Renovación de Cocina</h2>
+    <p class="body-copy muted" data-es="De un piso de azulejo viejo y dañado a un piso nuevo de vinílico/LVP." data-en="From an old, damaged tile floor to a new vinyl/LVP floor.">De un piso de azulejo viejo y dañado a un piso nuevo de vinílico/LVP.</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="feature-tag" data-es="Antes" data-en="Before">Antes</span>
+      <img src="assets/mv-flooring/proj_kitchen_before.webp" alt="Cocina antes con piso de azulejo dañado">
+    </div>
+    <div class="feature-item">
+      <span class="feature-tag" data-es="Después" data-en="After">Después</span>
+      <img src="assets/mv-flooring/proj_kitchen_after.webp" alt="Cocina después con piso nuevo">
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section style="padding-top:0;">
+  <div class="wrap" style="margin-bottom:32px;">
+    <span class="kicker" data-es="Trabajos Reales" data-en="Real Work">Trabajos Reales</span>
+    <h2 class="heading" data-es="Galería de Proyectos" data-en="Project Gallery">Galería de Proyectos</h2>
+  </div>
+  <div class="gallery-grid">
+    <a href="assets/mv-flooring/proj_05_medallion.webp" target="_blank"><img src="assets/mv-flooring/proj_05_medallion.webp" alt="Medallón de piso de madera"></a>
+    <a href="assets/mv-flooring/proj_06_bluewall.webp" target="_blank"><img src="assets/mv-flooring/proj_06_bluewall.webp" alt="Instalación de piso"></a>
+    <a href="assets/mv-flooring/proj_07_room.webp" target="_blank"><img src="assets/mv-flooring/proj_07_room.webp" alt="Piso instalado en habitación"></a>
+    <a href="assets/mv-flooring/proj_08_darkwood.webp" target="_blank"><img src="assets/mv-flooring/proj_08_darkwood.webp" alt="Piso de madera oscura"></a>
+    <a href="assets/mv-flooring/proj_09_wideplank.webp" target="_blank"><img src="assets/mv-flooring/proj_09_wideplank.webp" alt="Piso de tabla ancha"></a>
+    <a href="assets/mv-flooring/proj_12_kitchen.webp" target="_blank"><img src="assets/mv-flooring/proj_12_kitchen.webp" alt="Piso de cocina"></a>
+    <a href="assets/mv-flooring/proj_14_livingkitchen.webp" target="_blank"><img src="assets/mv-flooring/proj_14_livingkitchen.webp" alt="Piso de sala y cocina"></a>
+    <a href="assets/mv-flooring/proj_15_installing.webp" target="_blank"><img src="assets/mv-flooring/proj_15_installing.webp" alt="Instalación en proceso"></a>
+    <a href="assets/mv-flooring/proj_16_bigroom.webp" target="_blank"><img src="assets/mv-flooring/proj_16_bigroom.webp" alt="Piso en sala amplia"></a>
+    <a href="assets/mv-flooring/proj_17_hallway.webp" target="_blank"><img src="assets/mv-flooring/proj_17_hallway.webp" alt="Piso en pasillo"></a>
+    <a href="assets/mv-flooring/proj_18_kitchen_hallway_a.webp" target="_blank"><img src="assets/mv-flooring/proj_18_kitchen_hallway_a.webp" alt="Pasillo de cocina con piso de madera"></a>
+    <a href="assets/mv-flooring/proj_19_kitchen_green_wide.webp" target="_blank"><img src="assets/mv-flooring/proj_19_kitchen_green_wide.webp" alt="Cocina con gabinetes verdes y piso oscuro"></a>
+    <a href="assets/mv-flooring/proj_20_kitchen_green_angle.webp" target="_blank"><img src="assets/mv-flooring/proj_20_kitchen_green_angle.webp" alt="Cocina y comedor con piso de madera oscura"></a>
+    <a href="assets/mv-flooring/proj_22_living_appliances.webp" target="_blank"><img src="assets/mv-flooring/proj_22_living_appliances.webp" alt="Sala amplia con piso de madera nuevo"></a>
+    <a href="assets/mv-flooring/proj_23_glass_loft.webp" target="_blank"><img src="assets/mv-flooring/proj_23_glass_loft.webp" alt="Piso de madera en sala moderna"></a>
+    <a href="assets/mv-flooring/proj_21_glass_stair_detail.webp" target="_blank"><img src="assets/mv-flooring/proj_21_glass_stair_detail.webp" alt="Detalle de escalera con piso de madera"></a>
+    <a href="assets/mv-flooring/proj_24_stair_treads_raw.webp" target="_blank"><img src="assets/mv-flooring/proj_24_stair_treads_raw.webp" alt="Instalación de escalones de madera"></a>
+    <a href="assets/mv-flooring/proj_25_plank_install_hallway.webp" target="_blank"><img src="assets/mv-flooring/proj_25_plank_install_hallway.webp" alt="Instalación de tablones en pasillo"></a>
+    <a href="assets/mv-flooring/proj_26_entry_green_room.webp" target="_blank"><img src="assets/mv-flooring/proj_26_entry_green_room.webp" alt="Entrada con piso de madera y cuarto verde"></a>
+    <a href="assets/mv-flooring/proj_27_staircase_entry.webp" target="_blank"><img src="assets/mv-flooring/proj_27_staircase_entry.webp" alt="Entrada con escalera y piso de madera"></a>
+    <a href="assets/mv-flooring/proj_28_closeup_shine.webp" target="_blank"><img src="assets/mv-flooring/proj_28_closeup_shine.webp" alt="Acabado brillante de piso de madera"></a>
+    <a href="assets/mv-flooring/proj_29_plank_replacement.webp" target="_blank"><img src="assets/mv-flooring/proj_29_plank_replacement.webp" alt="Reemplazo de tablones de piso"></a>
+    <a href="assets/mv-flooring/proj_30_stairs_unfinished.webp" target="_blank"><img src="assets/mv-flooring/proj_30_stairs_unfinished.webp" alt="Escalones de madera sin terminar"></a>
+    <a href="assets/mv-flooring/proj_37_grayplank_island.webp" target="_blank"><img src="assets/mv-flooring/proj_37_grayplank_island.webp" alt="Piso de madera gris con isla de cocina"></a>
+    <a href="assets/mv-flooring/proj_38_dark_hallway_view.webp" target="_blank"><img src="assets/mv-flooring/proj_38_dark_hallway_view.webp" alt="Pasillo con piso de madera oscura"></a>
+    <a href="assets/mv-flooring/proj_41_bluerail_staircase.webp" target="_blank"><img src="assets/mv-flooring/proj_41_bluerail_staircase.webp" alt="Escalera con barandal azul y piso de madera"></a>
+    <a href="assets/mv-flooring/proj_42_refinish_patches.webp" target="_blank"><img src="assets/mv-flooring/proj_42_refinish_patches.webp" alt="Restauración de piso en proceso"></a>
+    <a href="assets/mv-flooring/proj_43_stairs_naturalseal.webp" target="_blank"><img src="assets/mv-flooring/proj_43_stairs_naturalseal.webp" alt="Sellado natural de escalones de madera"></a>
+    <a href="assets/mv-flooring/proj_44_livingroom_frenchdoors.webp" target="_blank"><img src="assets/mv-flooring/proj_44_livingroom_frenchdoors.webp" alt="Sala con piso de madera y puertas francesas"></a>
+    <a href="assets/mv-flooring/proj_45_pecan_floor_kitchen.webp" target="_blank"><img src="assets/mv-flooring/proj_45_pecan_floor_kitchen.webp" alt="Piso tono pecana hacia la cocina"></a>
+    <a href="assets/mv-flooring/proj_46_bedroom_ensuite.webp" target="_blank"><img src="assets/mv-flooring/proj_46_bedroom_ensuite.webp" alt="Recámara con piso de madera y baño"></a>
+    <a href="assets/mv-flooring/proj_47_dining_chandelier.webp" target="_blank"><img src="assets/mv-flooring/proj_47_dining_chandelier.webp" alt="Comedor con piso de madera y candelabro"></a>
+    <a href="assets/mv-flooring/proj_48_hallway_corridor.webp" target="_blank"><img src="assets/mv-flooring/proj_48_hallway_corridor.webp" alt="Pasillo con piso de madera"></a>
+    <a href="assets/mv-flooring/proj_49_dark_hallway_doors.webp" target="_blank"><img src="assets/mv-flooring/proj_49_dark_hallway_doors.webp" alt="Pasillo con piso de madera oscuro y dos puertas"></a>
+    <a href="assets/mv-flooring/proj_50_kitchen_white_cabinets.webp" target="_blank"><img src="assets/mv-flooring/proj_50_kitchen_white_cabinets.webp" alt="Cocina con gabinetes blancos y piso de madera clara"></a>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section class="section-divider">
+  <div class="wrap" style="margin-bottom:32px;">
+    <span class="kicker" data-es="En Acción" data-en="In Action">En Acción</span>
+    <h2 class="heading" data-es="Videos de Proyectos" data-en="Project Videos">Videos de Proyectos</h2>
+  </div>
+  <div class="wrap">
+    <div class="video-grid">
+      <video controls playsinline preload="metadata" src="assets/mv-flooring/video_before_after_long.mp4"></video>
+      <video controls playsinline preload="metadata" src="assets/mv-flooring/video_short.mp4"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MATERIALS ============ -->
+<section class="material-band section-divider">
+  <img src="assets/mv-flooring/material_swatches.webp" alt="Muestras de materiales de piso">
+  <div class="wrap">
+    <p class="material-caption" data-es="Trabajamos con una amplia variedad de acabados y materiales — te ayudamos a elegir el que mejor se adapte a tu espacio y presupuesto." data-en="We work with a wide variety of finishes and materials — we help you choose the one that best fits your space and budget.">Trabajamos con una amplia variedad de acabados y materiales — te ayudamos a elegir el que mejor se adapte a tu espacio y presupuesto.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section id="area" class="band-black">
+  <div class="wrap">
+    <span class="kicker" data-es="Cobertura" data-en="Coverage">Cobertura</span>
+    <h2 class="heading-lg" data-es="Área de Servicio" data-en="Service Area">Área de Servicio</h2>
+    <p class="body-copy" data-es="Damos servicio en la ciudad de Los Ángeles y hasta 80 millas a la redonda, cubriendo los condados de Los Ángeles, Orange, San Bernardino, Riverside y Ventura." data-en="We serve the city of Los Angeles and up to 80 miles around, covering Los Angeles, Orange, San Bernardino, Riverside, and Ventura counties.">Damos servicio en la ciudad de Los Ángeles y hasta 80 millas a la redonda, cubriendo los condados de Los Ángeles, Orange, San Bernardino, Riverside y Ventura.</p>
+
+    <div class="area-grid">
+      <div class="area-col">
+        <h4 data-es="Condado de Los Ángeles" data-en="Los Angeles County">Condado de Los Ángeles</h4>
+        <ul>
+          <li>Los Angeles</li>
+          <li>Long Beach</li>
+          <li>Santa Monica</li>
+          <li>Pasadena</li>
+          <li>Glendale</li>
+          <li>Burbank</li>
+          <li>Beverly Hills</li>
+          <li>Culver City</li>
+          <li>Torrance</li>
+          <li>Inglewood</li>
+          <li>Downey</li>
+          <li>Whittier</li>
+          <li>Santa Clarita</li>
+          <li>Pomona</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h4 data-es="Condado de Orange" data-en="Orange County">Condado de Orange</h4>
+        <ul>
+          <li>Anaheim</li>
+          <li>Santa Ana</li>
+          <li>Irvine</li>
+          <li>Huntington Beach</li>
+          <li>Newport Beach</li>
+          <li>Costa Mesa</li>
+          <li>Orange</li>
+          <li>Fullerton</li>
+          <li>Brea</li>
+          <li>Yorba Linda</li>
+          <li>La Habra</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h4 data-es="San Bernardino / Riverside" data-en="San Bernardino / Riverside">San Bernardino / Riverside</h4>
+        <ul>
+          <li>Ontario</li>
+          <li>Rancho Cucamonga</li>
+          <li>Fontana</li>
+          <li>Chino</li>
+          <li>Chino Hills</li>
+          <li>Riverside</li>
+          <li>Corona</li>
+          <li>Moreno Valley</li>
+          <li>San Bernardino</li>
+        </ul>
+      </div>
+      <div class="area-col">
+        <h4 data-es="Ventura y Valles" data-en="Ventura & Valleys">Ventura y Valles</h4>
+        <ul>
+          <li>Thousand Oaks</li>
+          <li>Simi Valley</li>
+          <li>Oxnard</li>
+          <li>Ventura</li>
+          <li>Malibu</li>
+          <li>Palmdale</li>
+          <li>Lancaster</li>
+          <li>West Covina</li>
+          <li>El Monte</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="radius-note" data-es="¿No ves tu ciudad en la lista? Contáctanos — si estás dentro de 80 millas de Los Ángeles, probablemente podamos ayudarte." data-en="Don't see your city on the list? Contact us — if you're within 80 miles of Los Angeles, we can likely help.">¿No ves tu ciudad en la lista? Contáctanos — si estás dentro de 80 millas de Los Ángeles, probablemente podamos ayudarte.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contacto" class="section-divider">
+  <div class="wrap">
+    <span class="kicker" data-es="Cotización" data-en="Estimate">Cotización</span>
+    <h2 class="heading-lg" data-es="Solicita tu Estimado Gratis" data-en="Get Your Free Estimate">Solicita tu Estimado Gratis</h2>
+
+    <div class="contact-grid" style="margin-top:32px;">
+      <form id="quoteForm" onsubmit="return sendToWhatsApp(event)">
+        <div class="field-group">
+          <label class="field-label" data-es="Nombre" data-en="Name">Nombre</label>
+          <input class="field-input" type="text" id="f-name" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-es="Teléfono" data-en="Phone">Teléfono</label>
+          <input class="field-input" type="tel" id="f-phone" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-es="Ciudad" data-en="City">Ciudad</label>
+          <input class="field-input" type="text" id="f-city">
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-es="Servicio" data-en="Service">Servicio</label>
+          <select class="field-select" id="f-service">
+            <option data-es="Piso de Madera" data-en="Hardwood Flooring">Piso de Madera</option>
+            <option data-es="Piso Laminado" data-en="Laminate Flooring">Piso Laminado</option>
+            <option data-es="Vinílico / LVP" data-en="Vinyl / LVP">Vinílico / LVP</option>
+            <option data-es="Mantenimiento y Reparación" data-en="Maintenance & Repair">Mantenimiento y Reparación</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-es="Mensaje" data-en="Message">Mensaje</label>
+          <textarea class="field-textarea" id="f-message" data-es-ph="Cuéntanos sobre tu proyecto..." data-en-ph="Tell us about your project..." placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+        </div>
+        <button type="submit" class="ghost-cta" data-es="Enviar por WhatsApp →" data-en="Send via WhatsApp →">Enviar por WhatsApp →</button>
+      </form>
+
+      <div class="contact-info-cell">
+        <div class="contact-info-row">
+          <div class="contact-info-label" data-es="Teléfono" data-en="Phone">Teléfono</div>
+          <div class="contact-info-value"><a href="tel:+13236353589">(323) 635-3589</a></div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-label" data-es="Teléfono Alterno" data-en="Alternate Phone">Teléfono Alterno</div>
+          <div class="contact-info-value"><a href="tel:+13238557989">(323) 855-7989</a></div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value"><a href="mailto:info@mvflooringservices.com">info@mvflooringservices.com</a></div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-label" data-es="Horario" data-en="Hours">Horario</div>
+          <div class="contact-info-value" data-es="Domingo–Viernes, 7 AM–5 PM" data-en="Sunday–Friday, 7 AM–5 PM">Domingo–Viernes, 7 AM–5 PM</div>
+        </div>
+        <div class="contact-info-row">
+          <div class="contact-info-label" data-es="Facebook" data-en="Facebook">Facebook</div>
+          <div class="contact-info-value"><a href="https://facebook.com/profile.php?id=100075798261897" target="_blank">MV Flooring Services</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="nav-logo">
+        <img src="assets/mv-flooring/mv_logo_hd.png" alt="MV Flooring Services" style="height:40px;">
+      </div>
+      <div class="footer-links">
+        <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
+        <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a href="#area" data-es="Área de Servicio" data-en="Service Area">Área de Servicio</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+        <a href="tel:+13236353589">(323) 635-3589</a>
+      </div>
+    </div>
+    <p class="footer-copy" data-es="© 2026 MV Flooring Services. Los Ángeles, CA." data-en="© 2026 MV Flooring Services. Los Angeles, CA.">© 2026 MV Flooring Services. Los Ángeles, CA.</p>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="wa-float" href="https://wa.me/13236353589?text=Hola%2C%20me%20interesa%20un%20estimado%20para%20piso" target="_blank" aria-label="WhatsApp">
+  <span class="wa-tooltip" data-es="Escríbenos por WhatsApp" data-en="Message us on WhatsApp">Escríbenos por WhatsApp</span>
+  <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4C7.7 4 4.15 7.53 4.15 11.88c0 1.4.37 2.77 1.07 3.97L4 20l4.27-1.12a7.9 7.9 0 0 0 3.77.96h0c4.34 0 7.87-3.53 7.87-7.88a7.83 7.83 0 0 0-2.31-5.64zm-5.55 12.12h0a6.55 6.55 0 0 1-3.34-.91l-.24-.14-2.5.65.67-2.43-.16-.25a6.5 6.5 0 0 1-1-3.48c0-3.62 2.95-6.57 6.58-6.57a6.53 6.53 0 0 1 6.56 6.57c0 3.63-2.95 6.56-6.57 6.56zm3.6-4.92c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.45.1-.13.2-.51.64-.62.77-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.61-1-.6-.53-1-1.18-1.11-1.38-.12-.2-.01-.3.09-.4.09-.1.2-.24.3-.36.1-.12.13-.2.2-.34.07-.13.03-.25-.02-.36-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.62 0 .95.7 1.87.8 2 .1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.85.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>
+</a>
+
+<script>
+  function setLang(lang){
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+      if (text !== null) el.textContent = text;
+    });
+    document.querySelectorAll('[data-es-ph]').forEach(function(el){
+      var ph = lang === 'en' ? el.getAttribute('data-en-ph') : el.getAttribute('data-es-ph');
+      if (ph !== null) el.setAttribute('placeholder', ph);
+    });
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  function sendToWhatsApp(e){
+    e.preventDefault();
+    var name = document.getElementById('f-name').value;
+    var phone = document.getElementById('f-phone').value;
+    var city = document.getElementById('f-city').value;
+    var service = document.getElementById('f-service').value;
+    var message = document.getElementById('f-message').value;
+    var text = 'Hola, mi nombre es ' + name + '. Teléfono: ' + phone +
+      (city ? '. Ciudad: ' + city : '') +
+      '. Servicio: ' + service +
+      (message ? '. Mensaje: ' + message : '');
+    window.open('https://wa.me/13236353589?text=' + encodeURIComponent(text), '_blank');
+    return false;
+  }
+</script>
+
+</body>
+</html>
